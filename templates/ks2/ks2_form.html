@@ -1,0 +1,141 @@
+{% extends 'ks2/base.html' %}
+
+{% block title %}{{ title }}{% endblock %}
+
+{% block content %}
+<div class="card">
+    <div class="card-header">
+        {{ title }}
+    </div>
+    <div class="card-body">
+        <form method="post">
+            {% csrf_token %}
+            
+            <h5 class="form-section-title">📌 Основная информация</h5>
+            <div class="row mb-3">
+                <div class="col-md-6">
+                    <label for="{{ form.investor.id_for_label }}" class="form-label">{{ form.investor.label }}</label>
+                    {{ form.investor }}
+                </div>
+                <div class="col-md-6">
+                    <label for="{{ form.okpo_investor.id_for_label }}" class="form-label">{{ form.okpo_investor.label }}</label>
+                    {{ form.okpo_investor }}
+                </div>
+            </div>
+            
+            <div class="row mb-3">
+                <div class="col-md-6">
+                    <label for="{{ form.customer.id_for_label }}" class="form-label">{{ form.customer.label }}</label>
+                    {{ form.customer }}
+                </div>
+                <div class="col-md-6">
+                    <label for="{{ form.okpo_customer.id_for_label }}" class="form-label">{{ form.okpo_customer.label }}</label>
+                    {{ form.okpo_customer }}
+                </div>
+            </div>
+            
+            <div class="row mb-3">
+                <div class="col-md-6">
+                    <label for="{{ form.contractor.id_for_label }}" class="form-label">{{ form.contractor.label }}</label>
+                    {{ form.contractor }}
+                </div>
+                <div class="col-md-6">
+                    <label for="{{ form.okpo_contractor.id_for_label }}" class="form-label">{{ form.okpo_contractor.label }}</label>
+                    {{ form.okpo_contractor }}
+                </div>
+            </div>
+            
+            <h5 class="form-section-title mt-4">🏗️ Данные о строительстве</h5>
+            <div class="row mb-3">
+                <div class="col-md-6">
+                    <label for="{{ form.construction.id_for_label }}" class="form-label">{{ form.construction.label }}</label>
+                    {{ form.construction }}
+                </div>
+                <div class="col-md-6">
+                    <label for="{{ form.object_name.id_for_label }}" class="form-label">{{ form.object_name.label }}</label>
+                    {{ form.object_name }}
+                </div>
+            </div>
+            
+            <div class="row mb-3">
+                <div class="col-md-4">
+                    <label for="{{ form.okdp.id_for_label }}" class="form-label">{{ form.okdp.label }}</label>
+                    {{ form.okdp }}
+                </div>
+                <div class="col-md-4">
+                    <label for="{{ form.document_number.id_for_label }}" class="form-label">{{ form.document_number.label }}</label>
+                    {{ form.document_number }}
+                </div>
+                <div class="col-md-4">
+                    <label for="{{ form.contract_number.id_for_label }}" class="form-label">{{ form.contract_number.label }}</label>
+                    {{ form.contract_number }}
+                </div>
+            </div>
+            
+            <div class="row mb-3">
+                <div class="col-md-4">
+                    <label class="form-label">{{ form.contract_date.label }}</label>
+                    {{ form.contract_date }}
+                </div>
+                <div class="col-md-8 d-flex align-items-end">
+                    <label class="form-label me-2">Дата договора:</label>
+                    <div class="d-flex">
+                        {{ form.day_contract }}
+                        <span class="mx-2">.</span>
+                        {{ form.month_contract }}
+                        <span class="mx-2">.</span>
+                        {{ form.year_contract }}
+                    </div>
+                </div>
+            </div>
+            
+            <h5 class="form-section-title mt-4">📅 Отчетный период</h5>
+            <div class="row mb-3">
+                <div class="col-md-6">
+                    <label for="{{ form.report_from.id_for_label }}" class="form-label">{{ form.report_from.label }}</label>
+                    {{ form.report_from }}
+                </div>
+                <div class="col-md-6">
+                    <label for="{{ form.report_to.id_for_label }}" class="form-label">{{ form.report_to.label }}</label>
+                    {{ form.report_to }}
+                </div>
+            </div>
+            
+            <div class="row mb-3">
+                <div class="col-md-6">
+                    <label for="{{ form.smeta.id_for_label }}" class="form-label">{{ form.smeta.label }}</label>
+                    {{ form.smeta }}
+                </div>
+            </div>
+            
+            <h5 class="form-section-title mt-4">✍️ Подписи сторон</h5>
+            <div class="row mb-3">
+                <div class="col-md-6">
+                    <label for="{{ form.surrender_position.id_for_label }}" class="form-label">{{ form.surrender_position.label }}</label>
+                    {{ form.surrender_position }}
+                </div>
+                <div class="col-md-6">
+                    <label for="{{ form.surrender_signature.id_for_label }}" class="form-label">{{ form.surrender_signature.label }}</label>
+                    {{ form.surrender_signature }}
+                </div>
+            </div>
+            
+            <div class="row mb-3">
+                <div class="col-md-6">
+                    <label for="{{ form.accept_position.id_for_label }}" class="form-label">{{ form.accept_position.label }}</label>
+                    {{ form.accept_position }}
+                </div>
+                <div class="col-md-6">
+                    <label for="{{ form.accept_signature.id_for_label }}" class="form-label">{{ form.accept_signature.label }}</label>
+                    {{ form.accept_signature }}
+                </div>
+            </div>
+            
+            <div class="mt-4">
+                <button type="submit" class="btn btn-primary btn-lg">💾 Сохранить и продолжить</button>
+                <a href="{% url 'ks2_list' %}" class="btn btn-secondary btn-lg">↩️ Назад к списку</a>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}

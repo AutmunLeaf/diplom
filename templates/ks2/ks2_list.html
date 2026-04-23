@@ -1,0 +1,48 @@
+{% extends 'ks2/base.html' %}
+
+{% block title %}Список форм КС-2{% endblock %}
+
+{% block content %}
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <h1>📋 Формы КС-2</h1>
+    <a href="{% url 'ks2_create' %}" class="btn btn-success">+ Создать новую форму</a>
+</div>
+
+{% if forms_list %}
+    <div class="table-responsive">
+        <table class="table table-striped table-hover">
+            <thead class="table-dark">
+                <tr>
+                    <th>№ документа</th>
+                    <th>Заказчик</th>
+                    <th>Подрядчик</th>
+                    <th>Объект</th>
+                    <th>Дата создания</th>
+                    <th>Действия</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for form in forms_list %}
+                <tr>
+                    <td>{{ form.document_number }}</td>
+                    <td>{{ form.customer }}</td>
+                    <td>{{ form.contractor }}</td>
+                    <td>{{ form.object_name }}</td>
+                    <td>{{ form.created_at|date:"d.m.Y H:i" }}</td>
+                    <td>
+                        <a href="{% url 'ks2_edit' form.pk %}" class="btn btn-sm btn-primary">✏️ Редактировать</a>
+                        <a href="{% url 'ks2_delete' form.pk %}" class="btn btn-sm btn-danger">🗑️ Удалить</a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% else %}
+    <div class="alert alert-info">
+        <h4>Нет созданных форм</h4>
+        <p>Создайте первую форму КС-2, нажав кнопку "Создать новую форму"</p>
+        <a href="{% url 'ks2_create' %}" class="btn btn-success">+ Создать новую форму</a>
+    </div>
+{% endif %}
+{% endblock %}
