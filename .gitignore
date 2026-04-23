@@ -1,0 +1,22 @@
+```
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.py~
+*.py.class
+*.pyc.class
+*.pyo.class
+*.pyd.class
+*.py~
+*.py.class~
+*.pyc.class~
+*.pyo.class~
+*.pyd.class~
+
+# Django
+*.sqlite3
+*.sqlite3-journal
+media/
+```
